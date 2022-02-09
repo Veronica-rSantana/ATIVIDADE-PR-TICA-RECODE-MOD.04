@@ -1,0 +1,96 @@
+package br.com.crud.teste;
+
+
+//import br.com.crud.dao.CadastroDAO;
+//import br.com.crud.dao.DestinoDAO;
+import br.com.crud.dao.PassagemDAO;
+//import br.com.crud.model.Cadastro;
+//import br.com.crud.model.Destino;
+import br.com.crud.model.Passagens;
+
+public class TesteCrud {
+
+	public static void main(String[] args) {
+		
+		PassagemDAO passagemDAO = new PassagemDAO();
+		
+		Passagens passagem1 = new Passagens();
+		//passagem1.setId_passagem(2);
+		passagem1.setOrigem("Rio de Janeiro");
+		passagem1.setDestino("Santa Catarina");
+		passagem1.setDataIda("19/02/22");
+		passagem1.setDataVolta("23/02/22");
+		passagem1.setValor(689.90f);
+		
+		
+		passagemDAO.save(passagem1);
+		
+		//CadastroDAO cadastroDAO = new CadastroDAO();
+		
+		// ------------ Cria um contato e salva no banco
+		
+		//Cadastro cadastro = new Cadastro();
+		/*cadastro.setNome("Izadora");
+		cadastro.setCpf("09823412336");
+		cadastro.setEmail("lk@gmail.com");
+		cadastro.setTelefone("71987659");
+		cadastro.setCidade("Salvador");
+		cadastro.setEstado("Bahia");*/
+		
+		//cadastroDAO.save(cadastro);
+		
+		//DestinoDAO destinosDAO = new DestinoDAO();
+		
+		/*Destino destinos = new Destino();
+		destinos.setId_destino(1);
+		destinos.setCidade_Destino("São Paulo");
+		destinos.setEstado_Destino("Rio de Janeiro");*/
+		
+		//destinosDAO.save(destinos);
+		
+		//Atualiza o cadastro com id = 1 com os dados do objeto contato1
+		//Cadastro cadastro1 = new Cadastro();
+		/*cadastro1.setId_cliente(2);
+		cadastro1.setNome("Fabiana");
+		cadastro1.setCpf("34067834556");
+		cadastro1.setEmail("veu@mail.com");
+		cadastro1.setTelefone("(47)8970-6789");
+		cadastro1.setCidade("Aracaju");
+		cadastro1.setEstado("Bahia");*/
+		
+		
+		/*DestinoDAO destinodao= new DestinoDAO();
+		Destino destinos1 = new Destino();
+		destinos1.setId_destino(2);
+		destinos1.setCidade_Destino("Petrolina");
+		destinos1.setEstado_Destino("Pernambuco");
+		
+		destinodao.save(destinos1);*/
+
+	
+		
+		/*DestinoDAO destinodao= new DestinoDAO();
+		Destino destinos1 = new Destino();
+		destinos1.setId_destino(2);
+		destinos1.setCidade_Destino("Crato");
+		destinos1.setEstado_Destino("Ceará");		
+		destinodao.update(destinos1);*/
+		
+		
+		
+		
+		
+				
+				
+				
+				//cadastroDAO.update(cadastro1);
+		
+		// ------------ Remove o contato com id
+		//cadastroDAO.removeById(2);
+		
+		//Lista todos os contatos do banco de dados
+		//for (Cadastro c : cadastroDAO.getCadastro()) {
+			//System.out.println("Nome: " + c.getNome());
+		//}
+	}
+}

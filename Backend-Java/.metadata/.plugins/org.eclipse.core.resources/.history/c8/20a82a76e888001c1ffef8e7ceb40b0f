@@ -1,0 +1,57 @@
+package br.com.crud.model;
+
+public class Cadastro {
+	private int id_cliente;
+	private String NOME;
+	private String CPF;
+	private String EMAIL;
+	private int TELEFONE;
+	private String CIDADE;
+	private String ESTADO;
+	public int getId_cliente() {
+		return id_cliente;
+	}
+	public void setId_cliente(int id_cliente) {
+		this.id_cliente = id_cliente;
+	}
+	public String getNOME() {
+		return NOME;
+	}
+	public void setNOME(String nOME) {
+		NOME = nOME;
+	}
+	public String getCPF() {
+		return CPF;
+	}
+	public void setCPF(String cPF) {
+		CPF = cPF;
+	}
+	public String getEMAIL() {
+		return EMAIL;
+	}
+	public void setEMAIL(String eMAIL) {
+		EMAIL = eMAIL;
+	}
+	public int getTELEFONE() {
+		return TELEFONE;
+	}
+	public void setTELEFONE(int tELEFONE) {
+		TELEFONE = tELEFONE;
+	}
+	public String getCIDADE() {
+		return CIDADE;
+	}
+	public void setCIDADE(String cIDADE) {
+		CIDADE = cIDADE;
+	}
+	public String getESTADO() {
+		return ESTADO;
+	}
+	public void setESTADO(String eSTADO) {
+		ESTADO = eSTADO;
+	}
+	
+	
+	
+
+}

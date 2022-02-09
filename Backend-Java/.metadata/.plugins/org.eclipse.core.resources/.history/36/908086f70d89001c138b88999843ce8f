@@ -1,0 +1,41 @@
+package br.com.crud.teste;
+import java.util.Date;
+
+import br.com.crud.dao.CadastroDAO;
+
+import br.com.crud.model.Cadastro;
+
+public class TesteCrud {
+
+	public static void main(String[] args) {
+		CadastroDAO cadastroDAO = new CadastroDAO();
+		
+		// ------------ Cria um contato e salva no banco
+		Cadastro cadastro = new Cadastro();
+		cadastro.setNome("Izadora");
+		cadastro.setCpf("09823412336");
+		cadastro.setEmail("lk@gmail.com");
+		cadastro.setTelefone("71987659");
+		cadastro.setCidade("Salvador");
+		cadastro.setEstado("Bahia");
+		
+		cadastroDAO.save(cadastro);
+		
+		// ------------ Atualiza o contato com id = 1 com os dados do objeto contato1
+		/*Contato contato1 = new Contato();
+		contato1.setId(1);
+		contato1.setNome("Izadora");
+		contato1.setIdade(25);
+		contato1.setDataCadastro(new Date());
+		
+		contatoDAO.update(contato1);*/
+		
+		// ------------ Remove o contato com id
+		// contatoDAO.removeById(2);
+		
+		// ------------ Lista todos os contatos do banco de dados
+		//for (Contato c : contatoDAO.getContatos()) {
+			//System.out.println("Nome: " + c.getNome());
+		//}
+	}
+}

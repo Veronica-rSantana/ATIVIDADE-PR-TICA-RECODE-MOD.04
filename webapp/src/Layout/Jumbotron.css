@@ -1,0 +1,15 @@
+.jumbotron{
+    width: 100%;
+    background-image: url('./public/img/fundo');
+    background-color: aqua;
+   image-orientation: from-image;
+   text-align: center;
+   display: flex;
+   justify-content: center;
+   
+}
+.lead{
+    background-color: blueviolet;
+}
+
+

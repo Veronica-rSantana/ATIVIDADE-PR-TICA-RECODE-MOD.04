@@ -1,0 +1,39 @@
+.estilo{
+    display: flex;
+    background-color: rgb(255, 230, 0);
+    justify-content: space-around;    
+}
+
+.contato{
+    display: flex;
+    width: 30%;
+    padding: 20px;   
+    flex-direction: column; 
+    text-align: center;
+}
+
+.Informacao{
+    display: flex;
+    width: 30%;   
+    padding: 20px;  
+    text-align: center;  
+}
+.pagamento{
+    flex-direction: column;
+    width: 30%;    
+    padding: 20px;  
+    display: flex; 
+    align-items: center;    
+}
+
+.imagem-pagamento{
+    width: 230px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+
+}
+.icones{
+    width: 20px;
+}
+  

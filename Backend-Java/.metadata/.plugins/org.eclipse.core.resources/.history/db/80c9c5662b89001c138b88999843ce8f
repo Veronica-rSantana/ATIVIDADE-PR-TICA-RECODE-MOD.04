@@ -1,0 +1,161 @@
+package br.com.crud.dao;
+
+
+	import java.sql.Connection;
+	import java.sql.PreparedStatement;
+	import java.sql.ResultSet;
+	import java.util.ArrayList;
+	import java.util.List;
+	import br.com.crud.factory.ConnectionFactory;
+	import br.com.crud.model.Passagens;
+
+
+	public class PassagemDAO {
+		public void save(Passagens passagem) {
+			
+			String sql = "INSERT INTO Passagens(Origem, Destino, DataIda, DataVolta,Valor)" + "VALUES(?,?)";
+
+			Connection conn = null;
+			PreparedStatement pstm = null;
+
+			try {
+				
+					conn = ConnectionFactory.createConnectionSQLServer();
+					pstm = conn.prepareStatement(sql);
+	
+					pstm.setInt(1, passagem.getId_passagem());				
+					pstm.setString(2, passagem.getOrigem());
+					pstm.setString(3, passagem.getDestino());
+					pstm.setString(4, passagem.getDataIda());
+					pstm.setString(5, passagem.getDataVolta());
+					pstm.setDouble(6, passagem.getValor());
+					pstm.execute();
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				
+					try {
+						if (pstm != null) {
+							pstm.close();
+						}
+						if (conn != null) {
+							conn.close();
+						}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		public void removeById(int id) {
+			String sql = "DELETE FROM Passagens WHERE Id = ?";
+
+				Connection conn = null;
+				PreparedStatement pstm = null;
+
+				try {
+					conn = ConnectionFactory.createConnectionSQLServer();	
+					pstm = conn.prepareStatement(sql);	
+					pstm.setInt(1, id);	
+					pstm.execute();
+					
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+					try {
+						if (pstm != null) {
+							pstm.close();
+						}
+	
+						if (conn != null) {
+							conn.close();
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		public void update(Passagens passagem) {
+			String sql = "UPDATE Passagens SET Origem= ?, Destino =?, DataIda=?, DataVolta=?, Valor=? WHERE id_passagem = ?";
+
+			Connection conn = null;
+			PreparedStatement pstm = null;
+
+				try {				
+						conn = ConnectionFactory.createConnectionSQLServer();
+						pstm = conn.prepareStatement(sql);
+		
+						pstm.setInt(1, passagem.getId_passagem());				
+						pstm.setString(2, passagem.getOrigem());				
+						pstm.setString(3, passagem.getDestino());
+						pstm.setString(4, passagem.getDataIda());
+						pstm.setString(5, passagem.getDataVolta());				
+						pstm.setDouble(6, passagem.getValor());				
+						pstm.execute();
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				
+					try {
+						if (pstm != null) {
+							pstm.close();
+						}
+						if (conn != null) {
+							conn.close();
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		public List<Passagens> getPassagem(){
+
+			String sql = "SELECT * FROM Passagens";
+
+			List<Passagens> passagem = new ArrayList<Passagens>();
+
+				Connection conn = null;
+				PreparedStatement pstm = null;			
+				ResultSet rset = null;
+
+			try {
+					conn = ConnectionFactory.createConnectionSQLServer();	
+					pstm = conn.prepareStatement(sql);	
+					rset = pstm.executeQuery();
+				
+				while (rset.next()) {
+					Passagens passagens = new Passagens();
+					
+					passagens.setId_passagem(rset.getInt("id_passagem"));					
+					passagens.setOrigem(rset.getString("Salvador"));					
+					passagens.setDestino(rset.getString("Recife"));
+					passagens.setDataIda(rset.getString("25/02/22"));
+					passagens.setDataVolta(rset.getString("29/02/22"));
+					passagens.setValor(rset.getDouble("399,90"));
+					
+					passagens.add(passagem);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+					try {
+						if (rset != null) {
+							rset.close();
+						}
+						if (pstm != null) {
+							pstm.close();
+						}
+					if (conn != null) {
+						conn.close();
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			return passagem;
+		}
+		
+	}

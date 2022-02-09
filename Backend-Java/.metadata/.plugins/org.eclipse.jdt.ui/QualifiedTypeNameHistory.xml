@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="br.com.crud.dao.CadastroDAO"/>
+    <fullyQualifiedTypeName name="br.com.crud.model.Destino"/>
+    <fullyQualifiedTypeName name="br.com.crud.dao.PassagemDAO"/>
+    <fullyQualifiedTypeName name="br.com.crud.model.Passagens"/>
+    <fullyQualifiedTypeName name="br.com.crud.dao.DestinoDAO"/>
+</qualifiedTypeNameHistroy>

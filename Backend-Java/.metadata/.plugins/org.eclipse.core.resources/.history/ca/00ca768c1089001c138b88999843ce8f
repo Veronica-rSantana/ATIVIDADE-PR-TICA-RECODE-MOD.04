@@ -1,0 +1,221 @@
+package br.com.crud.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.crud.factory.ConnectionFactory;
+import br.com.crud.model.Cadastro;
+
+public class CadastroDAO {
+	
+	
+	public void save(Cadastro cadastro) {
+		/*
+		 * Isso é uma sql comum, os ? são os parâmetros que nós vamos adicionar na base
+		 * de dados
+		 */
+
+		String sql = "INSERT INTO Cadastro(Nome,Cpf,Email,Telefone,Cidade,Estado)" + "VALUES(?,?,?,?,?,?)";
+
+		Connection conn = null;
+		PreparedStatement pstm = null;
+
+		try {
+			// Cria uma conexão com o banco
+			conn = ConnectionFactory.createConnectionSQLServer();
+
+			// Cria um PreparedStatement, classe usada para executar a query
+			pstm = conn.prepareStatement(sql);
+
+			// Adicionar o valor do primeiro parámetro da sql
+			pstm.setString(1, cadastro.getNome());
+			
+			// Adicionar o valor do primeiro parámetro da sql
+			pstm.setString(2, cadastro.getCpf());
+			
+			// Adicionar o valor do primeiro parámetro da sql
+			pstm.setString(3, cadastro.getEmail());
+
+			// Adicionar o valor do segundo parâmetro da sql
+			pstm.setString(4, cadastro.getTelefone());
+
+			// Adicionar o valor do terceiro parâmetro da sql
+			pstm.setString(5, cadastro.getCidade());
+			
+			// Adicionar o valor do terceiro parâmetro da sql
+			pstm.setString(6, cadastro.getEstado());
+
+
+			// Executar a sql para inserção dos dados
+			pstm.execute();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// fecha as conexões
+			try {
+				if (pstm != null) {
+					pstm.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public void removeById(int id) {
+		String sql = "DELETE FROM cadastro WHERE Id = ?";
+
+		Connection conn = null;
+		PreparedStatement pstm = null;
+
+		try {
+			conn = ConnectionFactory.createConnectionSQLServer();
+
+			pstm = conn.prepareStatement(sql);
+
+			pstm.setInt(1, id);
+
+			pstm.execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstm != null) {
+					pstm.close();
+				}
+
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public void update(Cadastro cadastro) {
+		String sql = "UPDATE cadastro SET Nome = ?, Cpf =?,Email =?,Telefone =?,Cidade =?,Estado = ? WHERE id_cliente = ?";
+
+		Connection conn = null;
+		PreparedStatement pstm = null;
+
+		try {
+			// Cria uma conexão com o banco
+			conn = ConnectionFactory.createConnectionSQLServer();
+
+			// Cria um PreparedStatement, classe usada para executar a query
+			pstm = conn.prepareStatement(sql);
+
+			// Adiciona o valor do primeiro parâmetro da sql
+			pstm.setString(1, cadastro.getNome());
+			
+			// Adiciona o valor do primeiro parâmetro da sql
+			pstm.setString(2, cadastro.getCpf());
+			// Adiciona o valor do primeiro parâmetro da sql
+			pstm.setString(3, cadastro.getEmail());
+
+			// Adicionar o valor do segundo parâmetro da sql
+			pstm.setString(4, cadastro.getTelefone());
+
+			// Adicionar o valor do terceiro parâmetro da sql
+			pstm.setString(5,cadastro.getCidade());
+			// Adicionar o valor do terceiro parâmetro da sql
+			pstm.setString(6,cadastro.getEstado());
+			
+			// Adicionar o valor do terceiro parâmetro da sql
+			pstm.setInt(7,cadastro.getId_cliente());
+			
+
+			// Executa a sql para inserção dos dados
+				pstm.execute();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Fecha as conexões
+			try {
+				if (pstm != null) {
+					pstm.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public List<Cadastro> getCadastro() {
+
+		String sql = "SELECT * FROM cadastro";
+
+		List<Cadastro> cadastros = new ArrayList<Cadastro>();
+
+		Connection conn = null;
+		PreparedStatement pstm = null;
+
+		// Classe que vai recuperar os dados do banco de dados
+		ResultSet rset = null;
+
+		try {
+			conn = ConnectionFactory.createConnectionSQLServer();
+
+			pstm = conn.prepareStatement(sql);
+
+			rset = pstm.executeQuery();
+
+			// Enquanto existir dados no banco de dados, faça
+			while (rset.next()) {
+				Cadastro cadastro = new Cadastro();
+
+				// Recupera o id do banco e atribui ele ao objeto
+				cadastro.setId_cliente(rset.getInt("id_cliente"));
+
+				// Recupera o nome do banco e atribui ele ao objeto
+				cadastro.setNome(rset.getString("Nome"));
+
+				// Recupera a idade do banco e atribui ele ao objeto
+				cadastro.setCpf(rset.getString("Cpf"));
+
+				// Recupera a data do banco e atribui ela ao objeto
+				cadastro.setEmail(rset.getString("Email"));
+				// Recupera o nome do banco e atribui ele ao objeto
+				cadastro.setTelefone(rset.getString("Telefone"));
+				// Recupera o nome do banco e atribui ele ao objeto
+				cadastro.setCidade(rset.getString("Cidade"));
+				// Recupera o nome do banco e atribui ele ao objeto
+				cadastro.setEstado(rset.getString("Estado"));
+				
+			
+
+				// Adiciona o cadastro recuperado, a lista de cadastros
+				cadastros.add(cadastro);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rset != null) {
+					rset.close();
+				}
+				if (pstm != null) {
+					pstm.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return cadastros;
+	}
+}
