@@ -29,10 +29,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 10px;
+    height: 40px;
     margin-top: 5%;
     margin-left: 8%; 
-    
+    border-radius: 2%; 
+    width: 120px; 
+    padding: 20px;
     
 }
 .central{
@@ -42,10 +44,56 @@
     color: aliceblue;
     size: 15px;
     
+    
 }
 .central img{
     width: 20px;
+    height: 20px;
 }
+/*-------------------------------------MEDIA QUERY-------------------------------------------------------*/
+@media(max-width:800px){
+    .central{
+        text-align: center;
+    }
+    .central p{
+        font-size: 15px;
+    }  
+}
+
+@media(max-width:560px){
+    .central{
+        font-size: 12px;
+    }   
+}
+@media(max-width:338px){
+    .central{
+        text-align: center;
+    }
+    .central p{
+        text-align: center;
+        font-size: 10px;
+    }  
+    
+}
+
+
+
+@media(max-width:600px){
+    .menu{
+        align-items: center;
+    }
+    @media(max-width:338px){
+        .menu{
+            align-items: center;
+            
+        }
+    }
+}
+
+
+
+ 
+
 
 
 

@@ -1,7 +1,8 @@
 .estilo{
     display: flex;
     background-color: rgb(255, 230, 0);
-    justify-content: space-around;    
+    justify-content: space-around;  
+    flex-wrap: wrap;  
 }
 
 .contato{
@@ -10,25 +11,29 @@
     padding: 20px;   
     flex-direction: column; 
     text-align: center;
+    font-family: Serb Neue;
 }
+
 
 .Informacao{
     display: flex;
     width: 30%;   
     padding: 20px;  
-    text-align: center;  
+    text-align: center; 
+    font-family: Serb Neue;
 }
 .pagamento{
     flex-direction: column;
     width: 30%;    
     padding: 20px;  
     display: flex; 
-    align-items: center;    
+    align-items: center; 
+    font-family: Serb Neue;    
 }
 
 .imagem-pagamento{
-    width: 230px;
-    height: 50px;
+    width: 240px;
+    height: 55px;
     align-items: center;
     justify-content: center;
 
@@ -36,4 +41,96 @@
 .icones{
     width: 20px;
 }
-  
+
+@media(max-width:768px){
+    .contato{
+        width: 30%;
+        padding: 20px;  
+        text-align: center; 
+    }
+}
+@media(max-width:560px){
+    .contato{
+        width: 90%;
+        padding: 30px;  
+        text-align: center;
+        margin-left: auto;
+    }
+    .estilo{
+        display: block;
+        justify-content: center;
+        margin-left: auto;
+    }
+    .Informacao{
+        width: 90%;
+        padding: 10px;  
+        text-align: center; 
+        justify-content: center;
+        margin-left: auto;
+    
+    }
+    .icones{
+        width: 20px;
+    }
+    .imagem-pagamento{
+        width: 230px;
+        height: 50px;
+        align-items: center;
+        justify-content: center;
+        
+    
+    }
+    .pagamento{
+        width: 90%;
+        padding: 10px;  
+        text-align: center; 
+        justify-content: center;
+        margin-left: auto;
+    }
+}
+
+@media(max-width:360px){
+    .contato{
+        width: 100%;
+        padding: 30px;  
+        text-align: center; 
+        margin-left: auto;
+    }
+    .estilo{
+        display: block;
+        justify-content: center;
+        margin-left: auto;
+        
+    }
+    .Informacao{
+        width: 90%;
+        padding: 10px;  
+        text-align: center; 
+        justify-content: center;
+        margin-left: auto;
+    
+    }
+    .icones{
+        width: 20px;
+    }
+    .imagem-pagamento{
+        width: 230px;
+        height: 50px;
+        align-items: center;
+        justify-content: center;
+        margin-left: 5px;
+        margin-right: 5px;
+        
+    
+    }
+    .pagamento{
+        width: 90%;
+        padding: 10px;  
+        text-align: center; 
+        justify-content: center;
+        margin-left: auto;
+    }
+}
+
+
+

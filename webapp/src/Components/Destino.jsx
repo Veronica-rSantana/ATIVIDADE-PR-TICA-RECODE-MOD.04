@@ -6,18 +6,25 @@ export default function Destino() {
        <>     
             <div className="Formulario">  
                 <form  className="passagens">
-                    <h3 align="center">Programe sua próxima viagem conosco!</h3>
-                    <label  for="localPartida">Origem:</label>
-                    <input type="text" id="cidadePartida"/>                       
-                    <label  for="localDestino">Destino:</label>
-                    <input type="text" id="estadoPartida"/>                        
-                    <label  for="ida">Data ida:</label>
-                    <input type="date" name="dataida"></input>                        
-                    <label  for="volta">Data volta:</label>
-                    <input type="date" name="datavolta"></input>                                            
-                    <input type="button" value="Buscar"/>   
-                </form>                
-             </div>                             
+                    <h3 align="center">Programe sua próxima viagem conosco!</h3>                
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Origem"/>
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Destino"/>
+                        </div>
+                        <div class="col">
+                            <input type="date" class="form-control" placeholder="Data Ida"/>
+                        </div>
+                        <div class="col">
+                            <input type="date" class="form-control" placeholder="Data Volta"/>
+                        <br/>
+                            <button type="button" class="btn btn-outline-primary">Enviar</button>            
+                        </div>                       
+                    </div>
+                </form>                                              
+             </div>                                        
         </>  
     );
 }
